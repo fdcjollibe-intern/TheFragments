@@ -44,8 +44,9 @@ class ProfileFragment : Fragment() {
                     ProfileInfoDialogFragment(),
                     "ProfileInfoDialog"
                 )
-                .addToBackStack("show_dialog")          // back button auto-removes it
+                .addToBackStack("show_dialog")
                 .commit()
+
         }
     }
 
