@@ -39,13 +39,13 @@ class ProfileFragment : Fragment() {
             Toast.makeText(requireContext(), "$tag → ADD-ing ProfileInfoDialogFragment via childFragmentManager", Toast.LENGTH_SHORT).show()
 
             childFragmentManager.beginTransaction()
-                .add(                                   // ADD (not replace — we want it on TOP)
-                    R.id.dialog_container,              // the container inside fragment_profile.xml
-                    ProfileInfoDialogFragment(),        // the fragment to add
-                    "ProfileInfoDialog"                 // tag string (used to find it later if needed)
+                .add(
+                    R.id.dialog_container,
+                    ProfileInfoDialogFragment(),
+                    "ProfileInfoDialog"
                 )
                 .addToBackStack("show_dialog")          // back button auto-removes it
-                .commit()                               // saves and executes the transaction
+                .commit()
         }
     }
 

@@ -3,31 +3,154 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     android:orientation="vertical"
-    android:background="#E3F2FD">
+    android:gravity="center"
+    android:background="#E3F2FD"
+    android:padding="16dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="🏠"
-        android:textSize="64sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home Fragment"
-        android:textSize="28sp"
+        android:text="🏠 Home Fragment"
+        android:textSize="22sp"
         android:textStyle="bold"
-        android:textColor="#1565C0"
-        android:layout_marginTop="16dp" />
+        android:textColor="#1565C0" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <!-- TOP ROW: Left (resets) and Right (survives + pauses) -->
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Watch the toasts to see the lifecycle!"
-        android:textSize="14sp"
-        android:textColor="#555555"
-        android:layout_marginTop="8dp" />
+        android:orientation="horizontal"
+        android:layout_marginTop="24dp">
+
+        <!-- LEFT — resets on tab switch -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#FFCDD2"
+            android:padding="16dp"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="❌ Resets"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#B71C1C" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lives in Fragment"
+                android:textSize="11sp"
+                android:textColor="#B71C1C" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="pauses + resets on leave"
+                android:textSize="10sp"
+                android:textColor="#B71C1C" />
+
+            <TextView
+                android:id="@+id/tv_counter_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="56sp"
+                android:textStyle="bold"
+                android:textColor="#C62828"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+        <!-- RIGHT — pauses on tab switch, resumes on return -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="#C8E6C9"
+            android:padding="16dp"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="✅ Survives"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#1B5E20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="lives in ViewModel"
+                android:textSize="11sp"
+                android:textColor="#1B5E20" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="pauses on leave, resumes on return"
+                android:textSize="10sp"
+                android:textColor="#1B5E20" />
+
+            <TextView
+                android:id="@+id/tv_counter_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textSize="56sp"
+                android:textStyle="bold"
+                android:textColor="#2E7D32"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- BOTTOM — never stops, even when on other tabs -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#1565C0"
+        android:padding="20dp"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="⏱️ Never Stops"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ticker lives in ViewModel — keeps going on other tabs"
+            android:textSize="11sp"
+            android:textColor="#BBDEFB"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/tv_counter_nonstop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="56sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
 
 </LinearLayout>
