@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    HomeFragment's layout has TWO layers:
-    1. The welcome content (emoji + label + button) — shown when no inner fragment is active
-    2. home_inner_container (FrameLayout) — this is where Step1/Step2/Step3 get loaded into
 
-    Both sit in a FrameLayout so the inner container overlays the welcome content
-    once a step fragment is added on top.
--->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Default welcome content — visible when inner stack is empty -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -39,7 +31,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Press the button to start navigating the inner stack.\nPress back from the last step to return here.\nPress back again to see the exit dialog."
+            android:text="Welcome to Jalibee's Buyog house, dayun lang ser"
             android:textSize="13sp"
             android:textColor="#555555"
             android:gravity="center"
@@ -49,18 +41,13 @@
             android:id="@+id/btn_go_step1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Go to Step 1 →"
+            android:text="Go to Step 1"
             android:backgroundTint="#1565C0"
             android:textColor="#FFFFFF"
             android:layout_marginTop="32dp" />
 
     </LinearLayout>
 
-    <!--
-        This is the container where Step1, Step2, Step3 get placed.
-        It starts empty. When a step fragment is added here, it covers the welcome content above.
-        When the back stack is fully popped, this becomes empty again → welcome content shows.
-    -->
     <FrameLayout
         android:id="@+id/home_inner_container"
         android:layout_width="match_parent"

@@ -1,11 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Step3 hosts TWO child fragments side by side.
-    It uses a horizontal LinearLayout with two FrameLayouts (left + right),
-    each with layout_weight="1" so they split the screen 50/50.
-    ColorAFragment loads into step3_container_left.
-    ColorBFragment loads into step3_container_right.
--->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -16,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="3️⃣ Step 3 — two child fragments below"
+        android:text="3️⃣ Step 3 "
         android:textSize="16sp"
         android:textStyle="bold"
         android:textColor="#311B92"
@@ -24,30 +18,18 @@
         android:padding="16dp"
         android:background="#EDE7F6" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Back → Step 2"
-        android:textSize="12sp"
-        android:textColor="#777777"
-        android:gravity="center"
-        android:paddingBottom="8dp"
-        android:background="#EDE7F6" />
 
-    <!-- The two child fragment containers side by side -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <!-- ColorAFragment goes here (red box) -->
         <FrameLayout
             android:id="@+id/step3_container_left"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
 
-        <!-- ColorBFragment goes here (blue box) -->
         <FrameLayout
             android:id="@+id/step3_container_right"
             android:layout_width="0dp"

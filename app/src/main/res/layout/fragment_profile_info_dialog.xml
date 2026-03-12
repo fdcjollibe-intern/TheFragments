@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    This is the layout for the child fragment.
-    It uses a semi-transparent dark background (the "scrim/overlay" effect)
-    with a white card in the center — mimicking a modal dialog.
--->
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#AA000000">
 
-    <!-- The white card in the middle -->
     <LinearLayout
         android:layout_width="300dp"
         android:layout_height="wrap_content"

@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, settingsFragment).hide(settingsFragment)
                 .add(R.id.fragment_container, profileFragment).hide(profileFragment)
-                .add(R.id.fragment_container, homeFragment)   // visible by default
+                .add(R.id.fragment_container, homeFragment)
                 .commit()
         }
 

@@ -36,7 +36,7 @@
         android:id="@+id/btn_go_step3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to Step 3 →"
+        android:text="Go to Step 3"
         android:backgroundTint="#880E4F"
         android:textColor="#FFFFFF"
         android:layout_marginTop="32dp" />
