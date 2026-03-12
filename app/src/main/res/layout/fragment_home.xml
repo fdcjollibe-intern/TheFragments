@@ -1,156 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<!--
+    HomeFragment's layout has TWO layers:
+    1. The welcome content (emoji + label + button) — shown when no inner fragment is active
+    2. home_inner_container (FrameLayout) — this is where Step1/Step2/Step3 get loaded into
+
+    Both sit in a FrameLayout so the inner container overlays the welcome content
+    once a step fragment is added on top.
+-->
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:background="#E3F2FD"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="🏠 Home Fragment"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#1565C0" />
-
-    <!-- TOP ROW: Left (resets) and Right (survives + pauses) -->
+    <!-- Default welcome content — visible when inner stack is empty -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="24dp">
-
-        <!-- LEFT — resets on tab switch -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="#FFCDD2"
-            android:padding="16dp"
-            android:layout_marginEnd="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="❌ Resets"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="#B71C1C" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="lives in Fragment"
-                android:textSize="11sp"
-                android:textColor="#B71C1C" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="pauses + resets on leave"
-                android:textSize="10sp"
-                android:textColor="#B71C1C" />
-
-            <TextView
-                android:id="@+id/tv_counter_left"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="56sp"
-                android:textStyle="bold"
-                android:textColor="#C62828"
-                android:layout_marginTop="4dp" />
-
-        </LinearLayout>
-
-        <!-- RIGHT — pauses on tab switch, resumes on return -->
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="#C8E6C9"
-            android:padding="16dp"
-            android:layout_marginStart="8dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="✅ Survives"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                android:textColor="#1B5E20" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="lives in ViewModel"
-                android:textSize="11sp"
-                android:textColor="#1B5E20" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="pauses on leave, resumes on return"
-                android:textSize="10sp"
-                android:textColor="#1B5E20" />
-
-            <TextView
-                android:id="@+id/tv_counter_right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:textSize="56sp"
-                android:textStyle="bold"
-                android:textColor="#2E7D32"
-                android:layout_marginTop="4dp" />
-
-        </LinearLayout>
-
-    </LinearLayout>
-
-    <!-- BOTTOM — never stops, even when on other tabs -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:background="#1565C0"
-        android:padding="20dp"
-        android:layout_marginTop="16dp">
+        android:background="#E3F2FD"
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="⏱️ Never Stops"
-            android:textSize="16sp"
+            android:text="🏠"
+            android:textSize="64sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home Fragment"
+            android:textSize="24sp"
             android:textStyle="bold"
-            android:textColor="#FFFFFF" />
+            android:textColor="#1565C0"
+            android:layout_marginTop="8dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ticker lives in ViewModel — keeps going on other tabs"
-            android:textSize="11sp"
-            android:textColor="#BBDEFB"
-            android:gravity="center" />
+            android:text="Press the button to start navigating the inner stack.\nPress back from the last step to return here.\nPress back again to see the exit dialog."
+            android:textSize="13sp"
+            android:textColor="#555555"
+            android:gravity="center"
+            android:layout_marginTop="12dp" />
 
-        <TextView
-            android:id="@+id/tv_counter_nonstop"
+        <Button
+            android:id="@+id/btn_go_step1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0"
-            android:textSize="56sp"
-            android:textStyle="bold"
+            android:text="Go to Step 1 →"
+            android:backgroundTint="#1565C0"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="4dp" />
+            android:layout_marginTop="32dp" />
 
     </LinearLayout>
 
-</LinearLayout>
+    <!--
+        This is the container where Step1, Step2, Step3 get placed.
+        It starts empty. When a step fragment is added here, it covers the welcome content above.
+        When the back stack is fully popped, this becomes empty again → welcome content shows.
+    -->
+    <FrameLayout
+        android:id="@+id/home_inner_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>

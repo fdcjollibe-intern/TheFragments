@@ -1,4 +1,4 @@
-package com.apollo.thefragments
+package com.apollo.thefragments.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.apollo.thefragments.R
 
 class ProfileFragment : Fragment() {
 
