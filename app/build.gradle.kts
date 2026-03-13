@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     id("com.google.gms.google-services")
+    id("kotlin-kapt")
 }
 
 android {
@@ -44,6 +45,24 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+
+    implementation("com.google.firebase:firebase-auth")
+
+    implementation("androidx.room:room-runtime:2.7.0")
+
+    implementation("com.google.android.gms:play-services-auth:21.3.0")
+
+
+
+    // Room database
+    implementation("androidx.room:room-runtime:2.7.0")            // ← ADD
+    implementation("androidx.room:room-ktx:2.7.0")                // ← ADD (coroutine support)
+    kapt("androidx.room:room-compiler:2.7.0")                     // ← ADD (generates Room code)
+
+
+    // Coroutines (for .await() on Firebase tasks)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.8.0")
+
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
 
