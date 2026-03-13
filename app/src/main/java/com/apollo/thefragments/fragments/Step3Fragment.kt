@@ -31,14 +31,6 @@ class Step3Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Step3 hosts TWO child fragments side by side.
-        // We use childFragmentManager (Step3's own manager) for these two.
-        // They are children of Step3, not of HomeFragment.
-        //
-        // We only add them if this is the first time (savedInstanceState == null).
-        // If the user switches tabs and comes back, Step3 is recreated but
-        // savedInstanceState is NOT null — Android already restores the child
-        // fragments automatically, so we must NOT add them again or they'd duplicate.
         if (savedInstanceState == null) {
             childFragmentManager.beginTransaction()
                 .add(R.id.step3_container_left, ColorAFragment())

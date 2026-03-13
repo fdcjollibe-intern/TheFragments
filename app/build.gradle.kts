@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")   // ← ADD THIS — needed for Room to generate code
 }
 
 android {
@@ -45,6 +46,17 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7")
+
+    // Preferences DataStore
+    implementation("androidx.datastore:datastore-preferences:1.2.1")
+    implementation("androidx.datastore:datastore-preferences-core:1.2.1")
+    implementation("androidx.datastore:datastore:1.2.1")
+    implementation("androidx.datastore:datastore-core:1.2.1")
+
+    // ← ADD THESE THREE — Room database
+    implementation("androidx.room:room-runtime:2.7.0")
+    implementation("androidx.room:room-ktx:2.7.0")
+    kapt("androidx.room:room-compiler:2.7.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

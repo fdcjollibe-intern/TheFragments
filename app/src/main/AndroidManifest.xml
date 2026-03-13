@@ -11,14 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheFragments">
+
+        <!--
+            LoginActivity is now the LAUNCHER — this is the first screen the user sees.
+            android:exported="true" is required for any activity with an intent-filter.
+        -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--
+            MainActivity is no longer the launcher.
+            android:exported="false" — can only be opened from inside this app.
+            The LoginActivity opens it via Intent after a successful login.
+        -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

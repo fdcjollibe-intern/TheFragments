@@ -46,15 +46,8 @@ class HomeFragment : Fragment() {
         Toast.makeText(requireContext(), "$tag → onViewCreated: View is ready", Toast.LENGTH_SHORT).show()
     }
 
-    // ─────────────────────────────────────────────────────────────
-    // Called by MainActivity's onBackPressed().
-    // Returns true  → we consumed the back press (popped an inner fragment)
-    // Returns false → nothing to pop, MainActivity should handle it (show exit dialog)
-    // ─────────────────────────────────────────────────────────────
     fun handleBackPress(): Boolean {
         return if (childFragmentManager.backStackEntryCount > 0) {
-            // There are inner fragments on the stack (Step1, Step2, Step3)
-            // Pop the top one and go back one level
             childFragmentManager.popBackStack()
             true
         } else {
