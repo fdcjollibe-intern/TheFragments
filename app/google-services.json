@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "648453066779",
+    "firebase_url": "https://todolist-d5dc2-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "todolist-d5dc2",
+    "storage_bucket": "todolist-d5dc2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648453066779:android:2b6400e3e3f2b86dd828be",
+        "android_client_info": {
+          "package_name": "com.apollo.thefragments"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "648453066779-ujhrnnfr4f92ofbiejr5ssm09oooq09q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxYRRyyDKzqWjVnXofXVbvoKRPVWjVr5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "648453066779-ujhrnnfr4f92ofbiejr5ssm09oooq09q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "648453066779-f7ba5dhjqfebesb6ta2no5og9gh0cttl.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "fdci.ToDoList"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
