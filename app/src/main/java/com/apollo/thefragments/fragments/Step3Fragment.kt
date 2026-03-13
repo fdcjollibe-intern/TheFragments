@@ -48,39 +48,4 @@ class Step3Fragment : Fragment() {
 
         Toast.makeText(requireContext(), "$tag → onViewCreated: Step3 view ready — adding 2 child fragments", Toast.LENGTH_SHORT).show()
     }
-
-    override fun onStart() {
-        super.onStart()
-        Toast.makeText(requireContext(), "$tag → onStart: Step3 visible", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Toast.makeText(requireContext(), "$tag → onResume: Step3 interactive", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Toast.makeText(requireContext(), "$tag → onPause: Step3 losing focus", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Toast.makeText(requireContext(), "$tag → onStop: Step3 stopped", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Toast.makeText(requireContext(), "$tag → onDestroyView: Step3 view destroyed", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Toast.makeText(requireContext(), "$tag → onDestroy: Step3 destroyed", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Toast.makeText(requireActivity().applicationContext, "$tag → onDetach: Step3 detached", Toast.LENGTH_SHORT).show()
-    }
 }

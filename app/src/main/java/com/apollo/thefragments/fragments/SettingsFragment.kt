@@ -35,39 +35,4 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         Toast.makeText(requireContext(), "$tag → onViewCreated: View is ready", Toast.LENGTH_SHORT).show()
     }
-
-    override fun onStart() {
-        super.onStart()
-        Toast.makeText(requireContext(), "$tag → onStart: Fragment visible", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Toast.makeText(requireContext(), "$tag → onResume: Fragment interactive", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Toast.makeText(requireContext(), "$tag → onPause: Fragment losing focus", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Toast.makeText(requireContext(), "$tag → onStop: Fragment stopped", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Toast.makeText(requireContext(), "$tag → onDestroyView: View destroyed", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Toast.makeText(requireContext(), "$tag → onDestroy: Fragment destroyed", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Toast.makeText(requireActivity().applicationContext, "$tag → onDetach: Detached from Activity", Toast.LENGTH_SHORT).show()
-    }
 }

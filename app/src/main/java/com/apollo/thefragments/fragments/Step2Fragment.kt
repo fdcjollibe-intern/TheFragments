@@ -42,38 +42,4 @@ class Step2Fragment : Fragment() {
         Toast.makeText(requireContext(), "$tag → onViewCreated: Step2 view ready", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onStart() {
-        super.onStart()
-        Toast.makeText(requireContext(), "$tag → onStart: Step2 visible", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Toast.makeText(requireContext(), "$tag → onResume: Step2 interactive", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Toast.makeText(requireContext(), "$tag → onPause: Step2 losing focus", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Toast.makeText(requireContext(), "$tag → onStop: Step2 stopped", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Toast.makeText(requireContext(), "$tag → onDestroyView: Step2 view destroyed", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Toast.makeText(requireContext(), "$tag → onDestroy: Step2 destroyed", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Toast.makeText(requireActivity().applicationContext, "$tag → onDetach: Step2 detached", Toast.LENGTH_SHORT).show()
-    }
 }

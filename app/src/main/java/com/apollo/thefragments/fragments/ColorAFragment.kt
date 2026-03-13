@@ -33,38 +33,4 @@ class ColorAFragment : Fragment() {
         Toast.makeText(requireContext(), "$tag → onViewCreated: ColorA ready", Toast.LENGTH_SHORT).show()
     }
 
-    override fun onStart() {
-        super.onStart()
-        Toast.makeText(requireContext(), "$tag → onStart: ColorA visible", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Toast.makeText(requireContext(), "$tag → onResume: ColorA interactive", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Toast.makeText(requireContext(), "$tag → onPause: ColorA losing focus", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Toast.makeText(requireContext(), "$tag → onStop: ColorA stopped", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        Toast.makeText(requireContext(), "$tag → onDestroyView: ColorA view destroyed", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Toast.makeText(requireContext(), "$tag → onDestroy: ColorA destroyed", Toast.LENGTH_SHORT).show()
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        Toast.makeText(requireActivity().applicationContext, "$tag → onDetach: ColorA detached", Toast.LENGTH_SHORT).show()
-    }
 }
