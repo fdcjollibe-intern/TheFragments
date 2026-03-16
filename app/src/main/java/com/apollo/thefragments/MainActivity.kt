@@ -10,8 +10,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    private val homeFragment     = HomeFragment()
-    private val profileFragment  = ProfileFragment()
+    private val homeFragment   = HomeFragment()
+    private val profileFragment = ProfileFragment()
+    private val cameraFragment  = CameraFragment()
     private val settingsFragment = SettingsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,7 @@ class MainActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, settingsFragment).hide(settingsFragment)
+                .add(R.id.fragment_container, cameraFragment).hide(cameraFragment)
                 .add(R.id.fragment_container, profileFragment).hide(profileFragment)
                 .add(R.id.fragment_container, homeFragment)
                 .commit()
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_home     -> showFragment(homeFragment)
                 R.id.nav_profile  -> showFragment(profileFragment)
+                R.id.nav_camera   -> showFragment(cameraFragment)
                 R.id.nav_settings -> showFragment(settingsFragment)
             }
             true
@@ -48,16 +51,14 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .hide(homeFragment)
             .hide(profileFragment)
+            .hide(cameraFragment)
             .hide(settingsFragment)
             .show(target)
             .commit()
     }
 
     override fun onBackPressed() {
-        if (!homeFragment.isHidden && homeFragment.handleBackPress()) {
-            return
-        }
-
+        if (!homeFragment.isHidden && homeFragment.handleBackPress()) return
         if (supportFragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
             return
@@ -69,12 +70,8 @@ class MainActivity : AppCompatActivity() {
         android.app.AlertDialog.Builder(this)
             .setTitle("Exit App")
             .setMessage("Do you want to exit?")
-            .setPositiveButton("Yes") { _, _ ->
-                finish()
-            }
-            .setNegativeButton("No") { dialog, _ ->
-                dialog.dismiss()
-            }
+            .setPositiveButton("Yes") { _, _ -> finish() }
+            .setNegativeButton("No")  { dialog, _ -> dialog.dismiss() }
             .show()
     }
 }

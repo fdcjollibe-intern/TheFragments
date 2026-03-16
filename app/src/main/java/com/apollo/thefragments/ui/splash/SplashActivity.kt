@@ -13,8 +13,6 @@ import com.apollo.thefragments.ui.auth.AuthActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-// @SuppressLint("CustomSplashScreen") — Android 12+ has its own splash screen API.
-// We're using a custom one for simplicity and compatibility with minSdk 29.
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
 
@@ -26,19 +24,15 @@ class SplashActivity : AppCompatActivity() {
         val repository = AuthRepository(db.userDao(), db.sessionDao())
 
         lifecycleScope.launch {
-            // Show splash for 1.5 seconds then decide where to go
             delay(1500)
 
             val destination = if (repository.isLoggedIn()) {
-                // Room says isLoggedIn = true → skip auth, go straight to app
                 Intent(this@SplashActivity, MainActivity::class.java)
             } else {
-                // Not logged in → show Login/Register screen
                 Intent(this@SplashActivity, AuthActivity::class.java)
             }
 
-            // Clear the back stack so pressing back from the next screen
-            // does not return to SplashActivity
+            // Clear the back stack so pressing back from the next screen does not return to SplashActivity
             destination.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(destination)
             finish()

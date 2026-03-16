@@ -55,9 +55,9 @@ dependencies {
 
 
     // Room database
-    implementation("androidx.room:room-runtime:2.7.0")            // ← ADD
-    implementation("androidx.room:room-ktx:2.7.0")                // ← ADD (coroutine support)
-    kapt("androidx.room:room-compiler:2.7.0")                     // ← ADD (generates Room code)
+    implementation("androidx.room:room-runtime:2.7.0")
+    implementation("androidx.room:room-ktx:2.7.0")                // (coroutine support)
+    kapt("androidx.room:room-compiler:2.7.0")                     // (generates Room code)
 
 
     // Coroutines (for .await() on Firebase tasks)
@@ -68,6 +68,10 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:34.10.0"))
     implementation("com.google.firebase:firebase-analytics")
+
+
+    implementation("androidx.cardview:cardview:1.0.0")
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

@@ -9,37 +9,28 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.tasks.await
 
-// Repository is the single source of truth for auth.
-// It talks to Firebase Auth AND Room DB.
-// ViewModel never touches Firebase or Room directly — always through here.
 class AuthRepository(
     private val userDao: UserDao,
     private val sessionDao: SessionDao
 ) {
     private val firebaseAuth = FirebaseAuth.getInstance()
 
-    // ─── SESSION ────────────────────────────────────────────────
-
-    // SplashActivity calls this to decide where to go
     suspend fun isLoggedIn(): Boolean {
         return sessionDao.getSession()?.isLoggedIn == true
     }
 
-    // Saves isLoggedIn = true to Room after any successful login
     private suspend fun saveSession(provider: String) {
         sessionDao.saveSession(Session(isLoggedIn = true, provider = provider))
     }
 
-    // Called on logout — clears both Room tables
+
     suspend fun logout() {
         firebaseAuth.signOut()
         sessionDao.clearSession()
         userDao.clearAll()
     }
 
-    // ─── EMAIL / PASSWORD ───────────────────────────────────────
 
-    // Returns Result.success with a message, or Result.failure with the error
     suspend fun registerWithEmail(email: String, password: String): Result<String> {
         return try {
             val result = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
@@ -69,9 +60,6 @@ class AuthRepository(
         }
     }
 
-    // ─── GOOGLE SIGN-IN ─────────────────────────────────────────
-
-    // Called after Google Sign-In returns an account — exchanges it for a Firebase credential
     suspend fun loginWithGoogle(account: GoogleSignInAccount): Result<String> {
         return try {
             // Convert the Google account token into a Firebase credential

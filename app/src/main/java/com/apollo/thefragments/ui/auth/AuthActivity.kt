@@ -67,7 +67,6 @@ class AuthActivity : AppCompatActivity() {
         }
     }
 
-    // Called by LoginFragment when user taps "Sign in with Google"
     fun launchGoogleSignIn() {
         val signInIntent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_GOOGLE_SIGN_IN)
