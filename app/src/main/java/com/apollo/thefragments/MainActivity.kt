@@ -1,28 +1,39 @@
 package com.apollo.thefragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.apollo.thefragments.fragments.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.View
 
 class MainActivity : AppCompatActivity() {
 
-    private val homeFragment   = HomeFragment()
-    private val profileFragment = ProfileFragment()
-    private val cameraFragment  = CameraFragment()
-    private val settingsFragment = SettingsFragment()
+    private  val homeFragment = HomeFragment()
+    private  val profileFragment  = ProfileFragment()
+    private  val cameraFragment  = CameraFragment()
+    private  val settingsFragment = SettingsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.w("CrashTrace", "MainActivity.onCreate - ENTER")
         setContentView(R.layout.activity_main)
+        Log.w("CrashTrace", "MainActivity.setContentView done")
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        val rootView: View? = findViewById(R.id.main)
+        Log.w("CrashTrace", "MainActivity: rootView = ${rootView?.javaClass?.simpleName} (isNull=${rootView == null})")
+
+        if (rootView != null) {
+            ViewCompat.setOnApplyWindowInsetsListener(rootView) { v, insets ->
+                val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+                insets
+            }
+        } else {
+            Log.w("CrashTrace", "MainActivity: WARNING - rootView is null. Layout may be missing @+id/main for this configuration (e.g. landscape). Skipping insets listener to avoid crash.")
         }
 
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -58,7 +69,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (!homeFragment.isHidden && homeFragment.handleBackPress()) return
+        if (!homeFragment.isHidden && homeFragment.handleBackPress()) {
+            return
+        }
+
         if (supportFragmentManager.backStackEntryCount > 0) {
             super.onBackPressed()
             return
@@ -70,8 +84,12 @@ class MainActivity : AppCompatActivity() {
         android.app.AlertDialog.Builder(this)
             .setTitle("Exit App")
             .setMessage("Do you want to exit?")
-            .setPositiveButton("Yes") { _, _ -> finish() }
-            .setNegativeButton("No")  { dialog, _ -> dialog.dismiss() }
+            .setPositiveButton("Yes") { _, _ ->
+                finish()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
             .show()
     }
 }

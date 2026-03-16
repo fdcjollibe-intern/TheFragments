@@ -12,22 +12,43 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Header row: title + connectivity badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Camera"
-            android:textAppearance="?attr/textAppearanceHeadlineSmall"
-            android:layout_marginBottom="24dp" />
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="16dp">
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Camera"
+                android:textAppearance="?attr/textAppearanceHeadlineSmall" />
 
+            <TextView
+                android:id="@+id/tvConnectivity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="● Online"
+                android:textSize="12sp"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:background="@drawable/bg_badge_online"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+        <!-- Open Camera card -->
         <androidx.cardview.widget.CardView
             android:id="@+id/cardOpenCamera"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="140dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="2dp"
-            app:cardBackgroundColor="?attr/colorSecondaryContainer">
+            app:cardBackgroundColor="?attr/colorSecondaryContainer"
+            android:layout_marginBottom="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -36,8 +57,8 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="56dp"
-                    android:layout_height="56dp"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
                     android:src="@drawable/ic_camera"
                     android:contentDescription="Open Camera" />
 
@@ -54,31 +75,45 @@
                     android:text="Tap to take a photo"
                     android:textAppearance="?attr/textAppearanceBodySmall"
                     android:alpha="0.6"
-                    android:layout_marginTop="4dp" />
+                    android:layout_marginTop="2dp" />
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Photo count label -->
         <TextView
             android:id="@+id/tvPhotoCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No photos yet"
             android:textAppearance="?attr/textAppearanceLabelLarge"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginBottom="8dp" />
 
-
+        <!-- Photo grid -->
         <GridView
             android:id="@+id/gridPhotos"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:numColumns="3"
-            android:horizontalSpacing="8dp"
-            android:verticalSpacing="8dp"
+            android:horizontalSpacing="6dp"
+            android:verticalSpacing="6dp"
             android:stretchMode="columnWidth" />
 
     </LinearLayout>
+
+    <!--
+        FAB floats above the bottom nav.
+        anchorGravity keeps it bottom-right.
+        Use ExtendedFloatingActionButton so we can show text + icon.
+    -->
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/fabSync"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:text="Sync to Cloud"
+        android:contentDescription="Sync to Cloud"
+        app:icon="@android:drawable/ic_menu_upload" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

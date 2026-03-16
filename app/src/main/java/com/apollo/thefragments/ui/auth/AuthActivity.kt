@@ -56,13 +56,10 @@ class AuthActivity : AppCompatActivity() {
         // Both LoginFragment and RegisterFragment post to the same authResult LiveData
         viewModel.authResult.observe(this) { result ->
             if (result == "SUCCESS") {
-                Toast.makeText(this, "Welcome!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 finish()
-            } else {
-                Toast.makeText(this, result, Toast.LENGTH_LONG).show()
             }
         }
     }
@@ -83,7 +80,6 @@ class AuthActivity : AppCompatActivity() {
                 // Pass the Google account to ViewModel → Repository → Firebase
                 viewModel.loginWithGoogle(account)
             } catch (e: ApiException) {
-                Toast.makeText(this, "Google sign-in failed: ${e.message}", Toast.LENGTH_SHORT).show()
             }
         }
     }

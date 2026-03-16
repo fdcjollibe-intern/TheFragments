@@ -16,16 +16,13 @@ class Step2Fragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Toast.makeText(context, "$tag → onAttach: Step2 attached", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Toast.makeText(requireContext(), "$tag → onCreate: Step2 created", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Toast.makeText(requireContext(), "$tag → onCreateView: Inflating Step2 layout", Toast.LENGTH_SHORT).show()
         return inflater.inflate(R.layout.fragment_step2, container, false)
     }
 
@@ -38,8 +35,6 @@ class Step2Fragment : Fragment() {
                 .addToBackStack("step3")
                 .commit()
         }
-
-        Toast.makeText(requireContext(), "$tag → onViewCreated: Step2 view ready", Toast.LENGTH_SHORT).show()
     }
 
 }

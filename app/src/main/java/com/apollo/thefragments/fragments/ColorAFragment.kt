@@ -15,22 +15,18 @@ class ColorAFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        Toast.makeText(context, "$tag → onAttach: ColorA attached", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Toast.makeText(requireContext(), "$tag → onCreate: ColorA created", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        Toast.makeText(requireContext(), "$tag → onCreateView: Inflating ColorA", Toast.LENGTH_SHORT).show()
         return inflater.inflate(R.layout.fragment_color_a, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Toast.makeText(requireContext(), "$tag → onViewCreated: ColorA ready", Toast.LENGTH_SHORT).show()
     }
 
 }
